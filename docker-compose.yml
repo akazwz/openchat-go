@@ -1,0 +1,35 @@
+services:
+  dev:
+    container_name: openchat-dev
+    image: golang:1.23.2-alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    command: go run main.go
+
+  prod:
+    container_name: openchat-prod
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+        - "8080:8080"
+    env_file:
+      - .env
+
+  postgres:
+    container_name: openchat-postgres
+    image: postgres:12.1
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+    postgres-data:
