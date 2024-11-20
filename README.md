@@ -9,6 +9,8 @@ Openchat AI Backend API 是一个用 Go (Golang) 编写的后端服务，提供�
 - AI 聊天功能
 - AI 绘画功能
 
+## 配套前端地址: https://github.com/akazwz/openchat-web
+
 此项目旨在为开发者提供一个简单易用的后端学习示例，使他们能够快速使用Golang开发并集成 AI 功能。
 如果你觉得这个项目对你有帮助，请不要忘记给一个 ⭐️ Star！
 
