@@ -2,7 +2,6 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -67,7 +66,7 @@ func (chatApi) ChatCompletion(w http.ResponseWriter, r *http.Request) {
 		acc.AddChunk(chunk)
 		if len(chunk.Choices) > 0 {
 			content := chunk.Choices[0].Delta.Content
-			if _, err := fmt.Fprintf(w, content); err != nil {
+			if _, err := w.Write([]byte(content)); err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
